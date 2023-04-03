@@ -1,0 +1,19 @@
+{
+  "name": "food-app",
+  "version": "1.0.0",
+  "description": "this is my first react app ",
+  
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "v venkata sailesh",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
