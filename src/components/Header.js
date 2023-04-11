@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 const Title=()=>(
     <a href="/">
         <img
@@ -14,10 +15,11 @@ const Title=()=>(
             <Title/>
             <div className="nav">
                 <ul>
-                    <li>home</li>
-                    <li>about</li>
-                    <li>contact</li>
-                    <li>cart</li>
+                    <li><Link to="/">home</Link></li>
+                    <li><Link to="/about">about</Link></li>
+                    <li><Link to="/contact">contact</Link></li>
+                    <li><Link to="/cart">cart</Link></li>
+                    
                 </ul>
             </div>
             </div>

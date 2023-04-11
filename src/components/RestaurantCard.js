@@ -5,6 +5,8 @@ const RestaruntCard = ({
     name,
     cuisines,
     cloudinaryImageId,
+    area,
+    totalRatingsString,
 
 })=>{
     return(
@@ -12,6 +14,9 @@ const RestaruntCard = ({
          <img src={IMG_CDN_URL+cloudinaryImageId}></img>
          <h2>{name}</h2>
          <h4>{cuisines.join(", ")} </h4> 
+         <h4>{area} </h4> 
+        <h4>{totalRatingsString}</h4>
+
          </div>
     );
 }

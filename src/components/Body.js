@@ -28,7 +28,7 @@ const Body = ()=>{
         setfilteredRestarunts(json?.data?.cards[2]?.data?.data?.cards);
     }
 
-    if(!allRestarunts) return null;//early return
+    if(!allRestarunts) return null; //early return
     
 
     return (allRestarunts?.length === 0) ? <Shimmer/> : (
@@ -43,7 +43,7 @@ const Body = ()=>{
             onChange={(e)=>{
                 setSearchText(e.target.value);
             }}></input>
-            <button className="search-btn"
+            <button className="search-btn" 
             onClick={()=>{
                 const data= filterData(searchText,allRestarunts);
                 setfilteredRestarunts(data);
