@@ -1,15 +1,18 @@
-import React from "react";
+import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
 import Footer from "./components/Footer.js";
-import About from "./components/About.js";
 import Error from "./components/Error.js";
 import Contact from "./components/Contact.js";
-import ProfileClass from "./components/ProfileClass.js";
 // the import written in brackets is named import 
 // the import written in noram is default import
+
+const Instamart = lazy(()=> import("./components/Instamart.js"));
+const About = lazy(()=> import ("./components/About.js"));
+
+//this is lazy loading or dynamic import 
 
 
 const AppLayout = () =>{
@@ -35,7 +38,11 @@ const AppRouter= createBrowserRouter([
             },
             {
                 path:"/about",
-                element:<About />,
+                element:( 
+                <Suspense fallback={<h1>Loding....</h1>}>
+                    <About />
+                </Suspense>
+                ),
                 // children:[    here we can nest the route like this..
                 //     {
                 //         path:"profile",
@@ -46,6 +53,16 @@ const AppRouter= createBrowserRouter([
             {
                 path:"/contact",
                 element:<Contact />,
+            },
+            {
+                path:"/instamart",
+                element: (
+                <Suspense fallback={<h1>Loding....</h1>}> 
+                    <Instamart />
+                </Suspense>
+                ),
+                // we can send a prop "fallback={}" in suspense where it is used- 
+                //- for showing anything before loading anything
             },
             
            

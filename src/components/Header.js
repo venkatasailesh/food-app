@@ -1,26 +1,46 @@
 import {Link} from "react-router-dom";
+import { useState } from "react";
+import useOnline from "../utils/useOnline";
+import {LOGO} from "../config.js";
+
+
+
+
 const Title=()=>(
     <a href="/">
         <img
-        className="logo"
+        className="h-28 p-2"
         alt="logo"
-        src="https://img.freepik.com/premium-vector/piggy-logo_744263-4.jpg?w=2000"
+        src={LOGO}
         ></img></a>
  );
 
 
  const Header = ()=>{
+    const [isLoggenedIn, setIsLoggedIn] = useState(false);
+    const isonline = useOnline();
+  
     return(
-        <div className="header">
+        <div className="flex justify-between bg-pink-50 shadow-lg">
             <Title/>
-            <div className="nav">
-                <ul>
-                    <li><Link to="/">home</Link></li>
-                    <li><Link to="/about">about</Link></li>
-                    <li><Link to="/contact">contact</Link></li>
-                    <li><Link to="/cart">cart</Link></li>
-                    
-                </ul>
+            <div>
+                <ul className="flex py-10">
+                    <li className="px-2 font-bold"><Link to="/">Home</Link></li>
+                    <li className="px-2 font-bold"><Link to="/about">About</Link></li>
+                    <li className="px-2 font-bold"><Link to="/contact">Contact</Link></li>
+                    <li className="px-2 font-bold"><Link to="/cart">Cart</Link></li>
+                    <li className="px-2 font-bold"><Link to="/instamart">Instamart</Link></li>
+                    </ul>
+            </div>
+            <h1 className="m-8">
+                {isonline ?"✅Online":"🔴Offline" }
+            </h1>
+            <div className="p-2 m-7 ml-2">
+            {isLoggenedIn ? (
+                <button onClick={()=>setIsLoggedIn(false)}>Logout</button>
+            ):(
+                <button onClick={()=>setIsLoggedIn(true)}>Login</button>
+            )}
             </div>
             </div>
 );

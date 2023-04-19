@@ -1,4 +1,6 @@
 import { Component } from "react";
+import {GIT_HUB_API_CALL} from "../config.js";
+import UserContext from "../utils/Usercontext.js";
 
 class ProfileClass extends Component {
     constructor(props){
@@ -12,7 +14,7 @@ class ProfileClass extends Component {
     }
 
     async componentDidMount(){
-        const data = await fetch("https://api.github.com/users/venkatasailesh");
+        const data = await fetch(GIT_HUB_API_CALL);
         const json = await data.json();
         this.setState({
             userInfo: json,
@@ -31,6 +33,10 @@ class ProfileClass extends Component {
     render(){
    return(
     <div>
+        <UserContext.Consumer>
+            {({user}) => <span className="font-bold">{user.name} - {user.email}</span>}
+        </UserContext.Consumer>
+
         <h1>THIS IS MY PROFILE OF GITHUB</h1>
     <h2>NAME : {this.state?.userInfo?.name}</h2>
     <h2>Created at : {this.state?.userInfo?.created_at}</h2>
@@ -49,6 +55,9 @@ export default ProfileClass;
         1. if any api call then it will again render
    4. componentDidUpdate
    5.componentWillUnmount
+
+<usercontext.consumer> is context usage in class based components where .consumer
+ is to consume what ever inside it
 
 */
 
