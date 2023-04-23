@@ -9,6 +9,7 @@ import {LOGO} from "../config.js";
 const Title=()=>(
     <a href="/">
         <img
+        data-testid = "logo"
         className="h-28 p-2"
         alt="logo"
         src={LOGO}
